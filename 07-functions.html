@@ -79,10 +79,8 @@
 
             calcTax(2000, 0.2);
             calcTax(7000);
-
-            //Rock Paper Scissors Game to further utilise functions
-
-            //Actually, I need not change anything, I went crazy on the last class.
+            
+        //Remaking Rock Paper Scissors Game to further utilise functions
 
         randombtn = document.querySelectorAll("button");
         output = document.getElementById("output");
@@ -90,9 +88,15 @@
 
         randombtn.forEach((button) => {
             button.addEventListener("click", function(){
- 
+                
                 let myMove = this.id;
                 
+                pickComputerMove();
+                playGame(myMove);
+                
+            });
+
+            function pickComputerMove() {
                 const randomNumber = Math.random();
                 let computerMove = '';
 
@@ -104,8 +108,17 @@
                     computerMove = "Scissors";
                 }
 
+                console.log(computerMove)
+
+                return computerMove;
+            }
+
+            function playGame ( myMove) { 
+                computerMove = pickComputerMove();
+                result = '';
+
                 if (computerMove === myMove) {
-                    result = "TIE!!!"
+                        result = "TIE!!!"
                 } else if (computerMove === 'Rock') {
                     if (myMove === 'Paper') {
                         result = "You win!!!" 
@@ -127,7 +140,8 @@
                 }
 
                 output.innerHTML = result + " You have picked " + myMove + " and the Computer has picked " + computerMove;
-            });
+            }    
+
         });
            
 
