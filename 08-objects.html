@@ -52,12 +52,19 @@
             rating: {
                 stars: 4.5,
                 count: 87
+            },
+            fun: function function1() {
+              console.log('function inside object');  
             }
         };
 
         console.log(product);
         console.log(product.name);
         console.log(product.price);
+
+        //calling function
+
+        product.fun(); //this is a method (object + function)
 
         //Accessing objects via Dot Notation
         product.name = "Cotton Socks";
