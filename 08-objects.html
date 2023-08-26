@@ -4,8 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Objects</title>
+    <style>
+         html, #show-text{
+            font-family: Poppins;
+            font-weight: 600;
+        }
+    </style>
 </head>
 <body>
-    <script></script>
+    <script>
+
+        //object
+
+        const product = {
+
+            //properties and value
+
+            name: 'Socks',
+            price: 1090
+        };
+
+        console.log(product);
+        console.log(product.name);
+        console.log(product.price);
+
+        product.name = "Cotton Socks";
+        console.log(product);
+
+        // add value
+        product.newProperty = true;
+        console.log(product);
+
+        //delete value
+        delete product.newProperty;
+        console.log(product);
+
+    </script>
 </body>
 </html>
