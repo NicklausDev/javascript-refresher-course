@@ -31,6 +31,15 @@
     <div id="show-text2"></div>
     <div id="show-text3"></div>
 
+    <div class="game">
+        <h2>Rock Paper Scissors</h2>
+        <button id="Rock" class="random">Rock</button>
+        <button id="Paper" class="random">Paper</button>
+        <button id="Scissors" class="random">Scissors</button>
+        <h4 id="output"></h4>
+        <h4 id="output2"></h4>
+    </div>
+
 
     <script>
 
@@ -71,7 +80,9 @@
             calcTax(2000, 0.2);
             calcTax(7000);
 
-            //Rock Paper Scissors Game to further utilise if-statements
+            //Rock Paper Scissors Game to further utilise functions
+
+            //Actually, I need not change anything, I went crazy on the last class.
 
         randombtn = document.querySelectorAll("button");
         output = document.getElementById("output");
@@ -94,26 +105,28 @@
                 }
 
                 if (computerMove === myMove) {
-                    output.innerHTML = "TIE!!! You have picked " + myMove + " and the Computer has picked " + computerMove;
+                    result = "TIE!!!"
                 } else if (computerMove === 'Rock') {
                     if (myMove === 'Paper') {
-                        output.innerHTML = "You win!!! You have picked Paper and the Computer has picked Rock" 
+                        result = "You win!!!" 
                     }else if (myMove === 'Scissors') {
-                        output.innerHTML = "You lose!!! You have picked Scissors and the Computer has picked Rock"
+                        result = "You lose!!!"
                     }
                 } else if (computerMove === 'Paper') {
                     if (myMove === 'Scissors') {
-                        output.innerHTML = "You win!!! You have picked Scissors and the Computer has picked Paper" 
+                        result = "You win!!!" 
                     }else if (myMove === 'Rock') {
-                        output.innerHTML = "You lose!!! You have picked Rock and the Computer has picked Paper"
+                        result = "You lose!!!"
                     }
                 } else if (computerMove === 'Scissors') {
                     if (myMove === 'Rock') {
-                        output.innerHTML = "You win!!! You have picked Rock and the Computer has picked Scissors" 
+                        result = "You win!!!" 
                     }else if (myMove === 'Paper') {
-                        output.innerHTML = "You lose!!! You have picked Paper and the Computer has picked Rock"
+                        result = "You lose!!!"
                     }
                 }
+
+                output.innerHTML = result + " You have picked " + myMove + " and the Computer has picked " + computerMove;
             });
         });
            
