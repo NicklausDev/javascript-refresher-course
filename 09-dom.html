@@ -10,9 +10,20 @@
             font-weight: 600;
         }
 
+        .test {
+            background-color: #eeecec;
+            padding: 15px;
+        }
+
         button{
             margin-right: 10px;
             padding: 10px;
+        }
+
+        .red {
+            background-color: red;
+            color: white;
+            border-radius: 2px;
         }
     </style>
 </head>
@@ -23,6 +34,12 @@
     <button class="another-btn">Another Btn</button>
 
     <h4 class="show-text"></h4>
+
+    <div class="test">
+        <h4>Exagerated YouTube Subscribe Button</h4>
+
+        <button class="you-tube">Subscribe</button>
+    </div>
 
     <script>
 
@@ -53,6 +70,21 @@
         }
 
         //!CLASS PROJECTS
+
+        //You-Tube Button
+
+        ytb = document.querySelector('.you-tube');
+
+        ytb.onclick = function () {
+
+            if (ytb.innerHTML === "Subscribe"){
+                ytb.innerHTML = "Subscribed";
+                ytb.classList.add('red');
+            } else if (ytb.innerHTML === "Subscribed") {
+                ytb.innerHTML = "Subscribe";
+                ytb.classList.remove('red')
+            }
+        };
 
 
 
