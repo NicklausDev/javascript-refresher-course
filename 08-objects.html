@@ -10,7 +10,7 @@
             font-weight: 600;
         }
         
-        .game {
+        .game, .test {
             background-color: #eeecec;
             padding: 15px;
         }
@@ -36,6 +36,14 @@
         <h4 id="output"></h4>
         <h4 id="scoreline"></h4>
         <h4 id="output2"></h4>
+    </div>
+
+    <div class="test">
+        <h2>Text Exercise</h2>
+        <h4 id="product"></h4>
+        <h4 id="price"></h4>
+        <h4 id="delivery"></h4>
+        <h4 id="cheaper"></h4>
     </div>
 
     <script>
@@ -276,6 +284,53 @@
 
         });
 
+
+        //!EXERCISE
+        //create an object
+
+        const testProduct = {
+            name: 'basketball',
+            price: 2095
+        };
+
+        testProductShow = document.getElementById('product');
+
+        testProductShow.innerHTML = `${testProduct.name} , ${testProduct.price}`;
+
+        //increase the price by 500
+
+        testProduct.price = testProduct.price + 500;
+
+        testProductPrice = document.getElementById('price');
+        testProductPrice.innerHTML = `${testProduct.price}`;
+
+        //using bracket notation add delivery-time
+
+        testProduct['delivery-time'] = "2 days";
+
+        testProductDelivery = document.getElementById('delivery');
+        testProductDelivery.innerHTML = `${testProduct.name} , ${testProduct.price}, ${testProduct['delivery-time']}`;
+
+        //compare price
+
+        testProductCompare = document.getElementById('cheaper');
+
+        const testProduct2 = {
+            name: 'volleyball',
+            price: 1450
+        };
+
+        function comparePrice() {
+            if (testProduct.price < testProduct2.price) {
+                result = testProduct.name;
+            } else {
+                result = testProduct2.name;
+            }
+
+             testProductCompare.innerHTML =`${result} is cheaper`;
+        }
+        
+        comparePrice();
     </script>
 </body>
 </html>
