@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Projects with CSS</title>
+    <style>
+        html, input, button {
+            font-family: Poppins;
+            font-weight: 600;
+        }
+
+        .test, .amazon {
+            background-color: #eeecec;
+            padding: 15px;
+        }
+
+        h2, h3{
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
+        }
+
+        button, input{
+            margin-right: 10px;
+            padding: 10px;
+        }
+
+        input[type = 'button']{
+            width: 120px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .you-tube{
+            background-color: #000;
+            color: white;
+            border-radius: 25px;
+        }
+
+        .red {
+            background-color: red;
+            color: white;
+        }
+
+        .cost-input {
+            background-color: green;
+            color: whitesmoke;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="test">
+
+        <h2>CSS on Projects</h2>
+
+        <h4>Exagerated YouTube Subscribe Button</h4>
+
+        <button class="you-tube">Subscribe</button>
+    </div>
+
+    <div class="amazon">
+        <h3>Amazon Shipping Calculator</h3>
+        <h4>Orders under $40 =+ $10 shipping</h4>
+        <h4>Orders over $40 = FREE shipping</h4>
+        <form onsubmit="return false">  
+            <input type="text" id="text-area" placeholder="Insert price" onkeydown="readkey()">
+            <input type="button" id="calc-btn" value="Calculate"
+            class="cost-input">
+        </form>
+
+        <h4 id="display-price"></h4>
+        
+
+        <form onsubmit="return false">  
+            <input type="text" id="text-area2" placeholder="Insert price" onkeyup="readinput()">
+            <input type="button" id="calculate-btn" value="Calculate" class="cost-input">
+        </form>
+
+        <h4 id="live-display-price"></h4>
+    </div>
+
+    <script>
+
+        //I prolly overdid this one in previous lessons to the point I don't know what I'll note down in this class; basically kept using my css in all other projects.
+
+        //!CLASS PROJECTS
+
+        //You-Tube Button
+
+        ytb = document.querySelector('.you-tube');
+
+        ytb.onclick = function () {
+
+            if (ytb.innerText === "Subscribe"){
+                ytb.innerText = "Subscribed";
+                ytb.classList.add('red');
+            } else if (ytb.innerText === "Subscribed") {
+                ytb.innerText = "Subscribe";
+                ytb.classList.remove('red')
+            }
+        };
+
+        // Amazon Shopping Calculator
+        
+        calcPrice = document.getElementById('calc-btn');
+        displayPrice = document.getElementById('display-price');
+        liveDisplayPrice = document.getElementById('live-display-price');
+        
+        calcPrice.onclick = function () {
+            totalPrice();
+        }
+        
+        
+        function totalPrice () {
+
+            let textPrice = Number(document.querySelector('#text-area').value);
+
+            if (textPrice < 40) {
+                textPrice = textPrice + 10;
+                displayPrice.innerText = `Total Cost for your Purchase = Ksh. ${textPrice.toFixed(2)}`;
+            } else {
+                displayPrice.innerText = `Total Cost for your Purchase = Ksh. ${textPrice.toFixed(2)}`
+            }
+
+        }
+
+        function readkey () {
+           if (event.key === "Enter") {
+            totalPrice();
+           } 
+        }
+
+        //window object
+
+        window.document
+        window.console
+        window.alert
+
+        //JS adds it everytime we access these objects
+
+        function readinput () {
+            let textPrice2 = Number(document.querySelector('#text-area2').value);
+
+            liveDisplayPrice.innerHTML = `Total Cost for your Purchase = Ksh. ${(textPrice2 + 10).toFixed(2)}`;
+        }
+    </script>
+    
+</body>
+</html>
