@@ -54,13 +54,15 @@
                 count: 87
             },
             fun: function function1() {
-              console.log('function inside object');  
+              //console.log('function inside object');  
             }
         };
 
+        /*
         console.log(product);
         console.log(product.name);
         console.log(product.price);
+        */
 
         //calling function
 
@@ -68,21 +70,21 @@
 
         //Accessing objects via Dot Notation
         product.name = "Cotton Socks";
-        console.log(product);
+        //console.log(product);
 
         //Accessing objects via Bracket Notaion
-        console.log(product['delivery-time']);
+        //console.log(product['delivery-time']);
 
         //Accessing nested objects
-        console.log(product.rating.stars);
+        //console.log(product.rating.stars);
 
         // add value
         product.newProperty = true;
-        console.log(product);
+        //console.log(product);
 
         //delete value
         delete product.newProperty;
-        console.log(product);
+        //console.log(product);
 
 
         //BUILT-IN OBJECTS
@@ -92,16 +94,16 @@
 
         //Convert product object to JSON
         
-        console.log (JSON.stringify(product));
+        //console.log (JSON.stringify(product));
 
         //Convert JSON to product object
         
         const objSytringify = JSON.stringify(product);
         const objParsing = JSON.parse(objSytringify);
 
-        console.log(objParsing);
+        //console.log(objParsing);
 
-        //
+        //localStorage:
 
 
 
@@ -112,10 +114,14 @@
         output2 = document.getElementById("output2");
         scoreline = document.getElementById("scoreline");
 
-        const score = {
-            wins: 0,
-            losses: 0,
-            draws: 0
+        let score = JSON.parse(localStorage.getItem('score'));
+
+        if (score === null) {
+            score = {
+                wins: 0,
+                losses: 0,
+                draws: 0
+            }
         }
 
         randombtn.forEach((button) => {
@@ -127,7 +133,6 @@
                     score.draws=0;
                     score.losses=0;
                     score.wins=0;
-
                 }
                 
                 pickComputerMove();
@@ -183,6 +188,10 @@
                 } else if (result === "TIE!!!") {
                     score.draws += 1;
                 }
+
+                localStorage.setItem(
+                    'score', JSON.stringify(score)
+                );
 
                 output.innerHTML = `${result}. You have picked ${myMove} and the Computer has picked ${computerMove}.`
 
