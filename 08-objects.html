@@ -84,6 +84,27 @@
         delete product.newProperty;
         console.log(product);
 
+
+        //BUILT-IN OBJECTS
+        //*JSON and localStorage
+
+        //JSON Obj helps convert Javascript Obj to JSON
+
+        //Convert product object to JSON
+        
+        console.log (JSON.stringify(product));
+
+        //Convert JSON to product object
+        
+        const objSytringify = JSON.stringify(product);
+        const objParsing = JSON.parse(objSytringify);
+
+        console.log(objParsing);
+
+        //
+
+
+
         //Remaking Rock Paper Scissors Game to further utilise objects
 
         randombtn = document.querySelectorAll("button");
