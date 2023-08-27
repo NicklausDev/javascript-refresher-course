@@ -36,6 +36,10 @@
             background-color: green;
             color: whitesmoke;
         }
+
+        p{
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
@@ -49,7 +53,7 @@
             class="cost-input">
         </form>
 
-        <h4 id="display-task"></h4>
+        <div id="display-task"></div>
     </div>
 
     <script>
@@ -168,13 +172,16 @@
            numsDoubled.push(num * 2) ;
         }
 
-        console.log(numsDoubled);
+        //console.log(numsDoubled);
 
 
         //Making To-Do App to further utilise Arrays
 
         taskList = [];
         addTask = document.getElementById('add-task');
+        displayTask = document.getElementById('display-task');
+
+        renderTaskList();
 
         addTask.onclick = function () {
             readInput();
@@ -188,12 +195,45 @@
         };
 
         function readInput () {
-            inputVal = document.getElementById('text-area').value;
-
+            let inputVal = document.getElementById('text-area').value;
+            
             taskList.push(inputVal);
-            console.log(taskList);
+
+            renderTaskList();
             inputVal = '';
         };
+
+        function renderTaskList () {
+            let taskListHTML = '';
+
+            /* Method 1
+            for (let i = 0; i <  taskList.length; i++) {
+                const element = taskList[i];
+
+                const htmlStuff = `<p>${element}</p>`;
+
+                taskListHTML += htmlStuff;
+
+                displayTask.innerHTML = taskListHTML;
+                
+            }
+
+            */
+
+            // Method 2 (Which I like More)
+
+
+            element = taskList[i];
+
+            taskList.forEach(element => {
+
+                const htmlStuff = `<p>${element}</p>`;
+
+                taskListHTML += htmlStuff;
+
+                displayTask.innerHTML = taskListHTML;
+            });
+        }
         
 
     </script>
