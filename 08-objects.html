@@ -192,6 +192,14 @@
             draws: 0
         } ;
 
+        function scorelinePrint () {
+            scoreline.innerHTML=`
+                Wins : ${score.wins}, Losses : ${score.losses},
+                Draws : ${score.draws}`;
+        }
+
+        scorelinePrint();
+
         /*
         if (!score ## means ( === null )) {
            score = { 
@@ -277,9 +285,7 @@
                     output.innerHTML = "Scores Have Been Reset"   
                 };
 
-                scoreline.innerHTML=`
-                Wins : ${score.wins}, Losses : ${score.losses},
-                Draws : ${score.draws}`;
+                scorelinePrint();
             }    
 
         });
