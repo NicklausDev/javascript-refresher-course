@@ -105,7 +105,71 @@
 
         //localStorage:
 
+        //values with properties and methods (Auto-Boxing)
 
+        console.log('hello'.length);
+        console.log('hello'.toUpperCase());
+
+        const object1 = {
+            message: 'hello'
+        };
+
+        //Copy by Reference
+        const object2 = object1;
+
+        object1.message = "Good Job";
+        console.log(object2);
+
+        // Comparing variables
+
+        const object3 = {
+            message: "Good job"
+        };
+        
+        console.log(object3 === object1);
+        //returns false despite having same values since the variables are just a reference
+        console.log(object2 === object1);
+        //returns true since the variables are referencing the point to the same memory
+
+        //shortcuts
+
+        const object4 = {
+            message: "Good job",
+            price: 799
+        };
+
+        //!DESTRUCTURING
+
+        // const message = object4.message;
+        const { message, price } = object4;
+        //destructures the object by taking out the property of the message and saving it in the variable.
+        console.log(message);
+        console.log(price);
+
+        //!SHORTHAND PROPERTY
+
+        const object5 = {
+           // message: message
+            message
+        };
+
+        console.log(object5);
+
+        //!SHORTHAND METHOD
+
+        const object6 = {
+           // message: message
+            message,
+            /* method: function functionM() {
+                console.log('method');
+            } */
+            method() {
+                console.log('method');
+            }
+        };
+
+        console.log(object6);
+        object6.method();
 
         //Remaking Rock Paper Scissors Game to further utilise objects
 
@@ -114,15 +178,21 @@
         output2 = document.getElementById("output2");
         scoreline = document.getElementById("scoreline");
 
-        let score = JSON.parse(localStorage.getItem('score'));
+        let score = JSON.parse(localStorage.getItem('score')) || {
+            wins: 0,
+            losses: 0,
+            draws: 0
+        } ;
 
-        if (score === null) {
-            score = {
-                wins: 0,
-                losses: 0,
-                draws: 0
-            }
+        /*
+        if (!score ## means ( === null )) {
+           score = { 
+            wins: 0,
+            losses: 0,
+            draws: 0
+           }
         }
+        */
 
         randombtn.forEach((button) => {
             button.addEventListener("click", function(){
