@@ -203,6 +203,12 @@
             inputVal = '';
         };
 
+        function deleteTask() {
+            taskList.splice({i}, 1);
+            renderTaskList();
+            console.log(taskList);
+        }
+
         function renderTaskList () {
             let taskListHTML = '';
 
@@ -227,7 +233,14 @@
 
             taskList.forEach(element => {
 
-                const htmlStuff = `<p>${element}</p>`;
+                const htmlStuff = `
+                    <p>
+                        ${element}
+                        <button
+                        onclick = "deleteTask()"
+                        >Delete Task</button>
+                    </p>
+                `;
 
                 taskListHTML += htmlStuff;
 
