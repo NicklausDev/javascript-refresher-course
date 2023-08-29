@@ -25,7 +25,11 @@
             padding: 10px;
         }
 
-        input[type = 'button']{
+        div {
+            font-size: 14px;
+        }
+
+        input[type = 'button'], .delete{
             width: 120px;
             border: none;
             cursor: pointer;
@@ -37,8 +41,27 @@
             color: whitesmoke;
         }
 
-        p{
-            font-size: 14px;
+        .todo-grid {
+            display: grid;
+            grid-template-columns: 38% 150px 100px;
+            gap: 10px 0;
+            margin-bottom: 10px;
+            align-items: center;
+            place-content: center;
+        }
+
+        .task-name {
+            padding: 5px;
+        }
+
+        .due-date {
+            text-align: center;
+            color: #605c6b;
+        }
+
+        .delete {
+            background-color: #be1515;
+            color: whitesmoke;
         }
     </style>
 </head>
@@ -47,14 +70,14 @@
     <div class="test">
         <h3>To-Do List</h3>
 
-        <form onsubmit="return false">  
+        <form class="todo-grid" onsubmit="return false">  
             <input type="text" id="text-area" placeholder="Insert Task" onkeydown="readkey()">
             <input title="date" type="date" id="due-date">
             <input type="button" id="add-task" value="Add Task"
             class="cost-input">
         </form>
 
-        <div id="display-task"></div>
+        <div class="todo-grid" id="display-task"></div>
     </div>
 
     <script>
@@ -234,14 +257,24 @@
                 const { name, dueDate } = elements;
 
                 const htmlStuff = `
-                    <p>
-                        ${name} ${dueDate}
-                        <button onclick = "
-                            taskList.splice(${i}, 1);
-                            renderTaskList();
-                        "
-                        >Delete Task</button>
-                    </p>
+                    
+                    <div class = 'task-name'>
+                        ${name}
+                    </div>
+
+                    <div class = 'due-date'> 
+                        ${dueDate}
+                    </div>
+
+                    <button 
+
+                    class = "delete"
+                    
+                    onclick = "
+                        taskList.splice(${i}, 1);
+                        renderTaskList();
+                    "
+                    >Delete Task</button>
                 `;
 
                 taskListHTML += htmlStuff;
