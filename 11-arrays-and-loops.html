@@ -49,6 +49,7 @@
 
         <form onsubmit="return false">  
             <input type="text" id="text-area" placeholder="Insert Task" onkeydown="readkey()">
+            <input type="date" id="due-date">
             <input type="button" id="add-task" value="Add Task"
             class="cost-input">
         </form>
@@ -121,9 +122,21 @@
         //looping through arrays
 
         const todoList = [
-            'make dinner',
-            'wash dishes',
-            'watch youtube'
+            {
+                name: 'make dinner',
+                dueDate: '2023-08-29'
+            },
+
+            {
+                name: 'wash dishes',
+                dueDate: '2023-08-29'
+            },
+
+            {
+                name: 'watch youtube',
+                dueDate: '2023-08-29'
+            }
+            
         ];
 
         // using for-loop
@@ -178,6 +191,7 @@
         //Making To-Do App to further utilise Arrays
 
         taskList = [];
+
         addTask = document.getElementById('add-task');
         displayTask = document.getElementById('display-task');
 
@@ -196,27 +210,44 @@
 
         function readInput () {
             let inputVal = document.getElementById('text-area').value;
+
+            let dateVal = document.getElementById('due-date').value;
             
-            taskList.push(inputVal);
+            taskList.push({
+                name: inputVal,
+                dueDate: dateVal
+            });
 
             renderTaskList();
             inputVal = '';
+            dateVal = '';
         };
 
         function deleteTask() {
-            taskList.splice({i}, 1);
-            renderTaskList();
-            console.log(taskList);
+            
         }
 
         function renderTaskList () {
             let taskListHTML = '';
 
-            /* Method 1
-            for (let i = 0; i <  taskList.length; i++) {
-                const element = taskList[i];
+            // Method 1
 
-                const htmlStuff = `<p>${element}</p>`;
+            for (let i = 0; i <  taskList.length; i++) {
+                const elements = taskList[i];
+
+                const { name, dueDate } = elements;
+
+                const htmlStuff = `
+                    <p>
+                        ${name} ${dueDate}
+                        <button onclick = "
+                            taskList.splice(${i}, 1);
+                            renderTaskList();
+                            console.log(taskList);
+                        "
+                        >Delete Task</button>
+                    </p>
+                `;
 
                 taskListHTML += htmlStuff;
 
@@ -224,14 +255,14 @@
                 
             }
 
-            */
+            
 
-            // Method 2 (Which I like More)
+            // Method 2 (Which I like More... Dies at 2nd stage sadly)
 
-
+            /*
             element = taskList[i];
 
-            taskList.forEach(element => {
+            taskList.forEach(elementsObject => {
 
                 const htmlStuff = `
                     <p>
@@ -246,6 +277,8 @@
 
                 displayTask.innerHTML = taskListHTML;
             });
+
+            */
         }
 
         //!SECTION TEST-WORK
