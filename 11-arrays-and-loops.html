@@ -49,7 +49,7 @@
 
         <form onsubmit="return false">  
             <input type="text" id="text-area" placeholder="Insert Task" onkeydown="readkey()">
-            <input type="date" id="due-date">
+            <input title="date" type="date" id="due-date">
             <input type="button" id="add-task" value="Add Task"
             class="cost-input">
         </form>
@@ -219,15 +219,11 @@
             });
 
             renderTaskList();
-            inputVal = '';
-            dateVal = '';
+
         };
 
-        function deleteTask() {
-            
-        }
-
         function renderTaskList () {
+            
             let taskListHTML = '';
 
             // Method 1
@@ -243,7 +239,6 @@
                         <button onclick = "
                             taskList.splice(${i}, 1);
                             renderTaskList();
-                            console.log(taskList);
                         "
                         >Delete Task</button>
                     </p>
