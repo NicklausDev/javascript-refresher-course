@@ -81,7 +81,7 @@
         //!SECTION Practical Examples
 
         setTimeout( function () {
-           console.log('Timed-out');
+           //console.log('Timed-out');
         }, 3000);
 
         //SECTION - ASYNCHRONOUS CODE
@@ -91,6 +91,24 @@
         /* setInterval( function() {
             console.log('interval')
         }, 3000);*/
+
+        //Looping Through an Array
+
+        [
+            'make dinner',
+            'wash dishes',
+            'watch youtube'
+        ].forEach(
+            function(value, index) {
+
+                if (value === 'wash dishes') {
+                   return; 
+                }
+                
+                console.log(index);
+                console.log(value);
+            }
+        );
 
         //!SECTION CLASS PROJECTS
 
