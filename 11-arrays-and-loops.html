@@ -210,6 +210,54 @@
 
         //console.log(numsDoubled);
 
+        const array1 = [1, 2, 3];
+        const array2 = array1.slice();
+        array2.push(4);
+        //console.log(array1);
+        //console.log(array2);
+
+        //!SECTION Destructuring
+
+        //const array3 = [1, 2, 3];
+        //getting the variables out using shorthand method
+        const [firstValue, secondValue, thirdValue] = [1, 2, 3];
+
+        //!SECTION LOOPS
+
+        //continue and break in loops
+
+        for (let i = 0; i <= 10; i++) {
+            if (i % 3 === 0) {
+                continue;
+            }
+           //console.log(i);
+            if (i === 8) {
+                break;
+            }
+        }
+
+        //using while loop
+
+        let index = 1;
+
+        while (index <= 10) {
+
+            if (index % 3 === 0) {
+                index++;
+               continue; 
+            }
+            console.log(index);
+            index++;
+        }
+
+        //functions in arrays
+        const numbers = [1, 2, 3];
+        const numsDoubled2 = [];
+
+        for (let i = 0; i < numbers.length; i++) {
+           let num = numbers[i];
+           numsDoubled2.push(numbers * 2) ;
+        }
 
         //Making To-Do App to further utilise Arrays
 
