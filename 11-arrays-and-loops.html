@@ -246,18 +246,29 @@
                 index++;
                continue; 
             }
-            console.log(index);
+            //console.log(index);
             index++;
         }
 
         //functions in arrays
-        const numbers = [1, 2, 3];
-        const numsDoubled2 = [];
 
-        for (let i = 0; i < numbers.length; i++) {
-           let num = numbers[i];
-           numsDoubled2.push(numbers * 2) ;
+        function doubleArray (numbers) {
+            const numsDoubled2 = [];
+
+            for (let i = 0; i < numbers.length; i++) {
+            let num = numbers[i];
+
+            if (num === 0) {
+                return numsDoubled2;
+            }
+            numsDoubled2.push(num * 2) ;
+            }
+
+            return numsDoubled2;
         }
+
+        console.log(doubleArray([1, 1, 3]));
+        console.log(doubleArray([2, 2, 5, 0, 5]));
 
         //Making To-Do App to further utilise Arrays
 
