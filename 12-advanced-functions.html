@@ -33,7 +33,8 @@
         <button id="Rock" class="random">Rock</button>
         <button id="Paper" class="random">Paper</button>
         <button id="Scissors" class="random">Scissors</button>
-        <button id="Reset" class="">Reset Score</button>
+        <button id="Reset" class="random">Reset Score</button>
+        <button id="AutoPlay" class="Auto-play">Autoplay</button>
         <h4 id="output"></h4>
         <h4 id="scoreline"></h4>
         <h4 id="output2"></h4>
@@ -95,7 +96,7 @@
 
         //Modified Rock Paper Scissors game to further utilise what learnt in class
 
-        randombtn = document.querySelectorAll("button");
+        randombtn = document.querySelectorAll(".random");
         output = document.getElementById("output");
         output2 = document.getElementById("output2");
         scoreline = document.getElementById("scoreline");
@@ -124,6 +125,19 @@
         }
         */
 
+        let autoPlayBtn = document.getElementById('AutoPlay');
+
+        autoPlayBtn.onclick = function () {
+            autoPlay();
+        };
+
+        function autoPlay(computerMove) {
+            setInterval(function() {
+                const playerMove = ComputerMove = computerMove;
+                playGame(playerMove);
+            }, 1000);
+        }
+
         randombtn.forEach((button) => {
             button.addEventListener("click", function(){
                 
@@ -133,12 +147,27 @@
                     score.draws=0;
                     score.losses=0;
                     score.wins=0;
+                } else if (this.id === 'AutoPlay'){
+                    
                 }
                 
                 pickComputerMove();
                 playGame(myMove);
                 
             });
+
+            let autoPlayBtn = document.getElementById('AutoPlay');
+
+            autoPlayBtn.onclick = function () {
+                autoPlay();
+            };
+
+            function autoPlay(computerMove) {
+                setInterval(function() {
+                    const playerMove = pickComputerMove();
+                    playGame(playerMove);
+                }, 1000);
+            }
 
             function pickComputerMove() {
                 const randomNumber = Math.random();
