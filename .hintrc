@@ -10,6 +10,7 @@
           "text-decoration-thickness"
         ]
       }
-    ]
+    ],
+    "no-inline-styles": "off"
   }
 }
