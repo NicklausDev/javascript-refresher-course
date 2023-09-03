@@ -71,7 +71,7 @@
         <h3>To-Do List</h3>
 
         <form class="todo-grid" onsubmit="return false">  
-            <input type="text" id="text-area" placeholder="Insert Task" onkeydown="readkey()">
+            <input type="text" id="text-area" placeholder="Insert Task">
             <input title="date" type="date" id="due-date">
             <input type="button" id="add-task" value="Add Task"
             class="cost-input">
@@ -276,19 +276,19 @@
 
         addTask = document.getElementById('add-task');
         displayTask = document.getElementById('display-task');
+        textArea = document.getElementById('text-area');
+
+        textArea.addEventListener('keydown', () => {
+           if (event.key === "Enter") {
+                readInput();
+            }
+        });
 
         renderTaskList();
 
         addTask.onclick = function () {
             readInput();
         }
-
-
-        function readkey() {
-            if (event.key === "Enter") {
-                readInput();
-            }
-        };
 
         function readInput () {
             let inputVal = document.getElementById('text-area').value;
@@ -328,17 +328,20 @@
                     <button 
 
                     class = "delete"
-                    
-                    onclick = "
-                        taskList.splice(${i}, 1);
-                        renderTaskList();
-                    "
                     >Delete Task</button>
                 `;
 
                 taskListHTML += htmlStuff;
 
                 displayTask.innerHTML = taskListHTML;
+
+                document.querySelectorAll('.delete')
+                    .forEach((deleteBtn, index) => {
+                        deleteBtn.addEventListener('click', () => {
+                            taskList.splice(index, 1);
+                        renderTaskList();
+                        });
+                    });
                 
             }
 

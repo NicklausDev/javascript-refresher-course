@@ -42,6 +42,8 @@
         <h4 id="output"></h4>
         <h4 id="scoreline"></h4>
         <h4 id="output2"></h4>
+
+        <button class="clickable">Click Me</button>
     </div>
 
     <script>
@@ -187,10 +189,22 @@
             let isAutoPlaying = false; 
             let intervalId; 
 
+            document.body.addEventListener('keydown', (event) => {
+                if (event.key === 'r') {
+                    playGame('Rock');
+                } else if (event.key === 'p') {
+                    playGame('Paper');
+                } else if (event.key === 's') {
+                    playGame('Scissors');
+                }
+            });
+
             function autoPlay(computerMove) {
+               // const autoPlay = () => {  }
+
 
                 if (!isAutoPlaying) {
-                    intervalId = setInterval(function() {
+                    intervalId = setInterval(() => {
                         const playerMove = pickComputerMove();
                         playGame(playerMove);
                     }, 1000);
@@ -267,6 +281,52 @@
 
         });
 
+
+        //!SECTION  ADVANCED 2ND CLASS
+
+
+        const regularFunction = function(param, param2) {
+            console.log('hi');
+
+            return 5;
+        }
+
+        const arrowFunction = (param, param2) => {
+            console.log('hello');
+
+            return 6;
+        }
+        arrowFunction();
+        regularFunction();
+
+        const oneParam = param => {
+           console.log(param + 1); 
+        };
+        oneParam(25);
+
+        const oneLine = () => 2 + 3;
+        console.log(oneLine());
+
+        const object2 = {
+            method: () => {
+
+            },
+            method() {}
+        }
+
+        const btnElement = document.querySelector('.clickable');
+
+        const eventListener = () => {
+            btnElement.innerHTML = "Clicked";
+        }
+
+        btnElement.addEventListener('click', eventListener);
+
+        btnElement.removeEventListener('click', eventListener );
+
+        btnElement.addEventListener('click', () => {
+            console.log("Clicked");
+        });
 
     </script>
 </body>
