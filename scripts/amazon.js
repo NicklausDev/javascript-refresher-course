@@ -70,7 +70,7 @@ document.querySelectorAll('.js-add-to-cart')
             });
 
             if (matchingItem) {
-                matchingItem.quantity + 1;
+                matchingItem.quantity += 1;
             } else {
                 cart.push({
                     productId,
@@ -78,6 +78,13 @@ document.querySelectorAll('.js-add-to-cart')
                 });
             }
 
-            console.log(cart);
+            let cartQuantity = 0;
+
+            cart.forEach((item) => {
+                cartQuantity += item.quantity;
+            });
+
+            document.querySelector('.js-cart-quantity')
+                .innerHTML = cartQuantity;
         });
     });
