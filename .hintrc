@@ -3,6 +3,7 @@
     "development"
   ],
   "hints": {
+<<<<<<< HEAD
     "compat-api/css": [
       "default",
       {
@@ -12,5 +13,18 @@
       }
     ],
     "no-inline-styles": "off"
+=======
+    "axe/text-alternatives": "off",
+    "button-type": "off",
+    "axe/forms": [
+      "default",
+      {
+        "select-name": "off"
+      }
+    ],
+    "meta-charset-utf-8": "off",
+    "axe/name-role-value": "off",
+    "axe/language": "off"
+>>>>>>> 8bd9a217b4226957c80602fb0c128edd9b994bf6
   }
 }
